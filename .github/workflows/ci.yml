@@ -11,6 +11,9 @@ jobs:
     name: Lint, format, and test
     runs-on: ubuntu-latest
 
+    env:
+      JWT_SECRET: test-only-secret-for-ci-not-production
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
