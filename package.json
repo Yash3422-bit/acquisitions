@@ -4,15 +4,28 @@
   "description": "",
   "type": "module",
   "main": "index.js",
+  "import": {
+    "#config/*": "./src/config/*",
+    "#controller/*": "./src/controller/*",
+    "#middleware/*": "./src/middleware/*",
+    "#models/*": "./src/models/*",
+    "#route/*": "./src/route/*",
+    "#services/*": "./src/services/*",
+    "#utils/*": "./src/utils/*",
+    "#validations/*": "./src/validations/*"
+  },
   "scripts": {
     "dev": "node --watch src/index.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "db:generate" : "drizzle-kit  generate",
-    "db:migrate" : "drizzle-kit  migrate",
-    "db:studio" : "drizzle-kit  studio"
+    "db:generate": "drizzle-kit  generate",
+    "db:migrate": "drizzle-kit  migrate",
+    "db:studio": "drizzle-kit  studio",
+    "test": "vitest run",
+    "start": "node src/index.js",
+    "prepare": "husky"
   },
   "repository": {
     "type": "git",
@@ -27,16 +40,44 @@
   "homepage": "https://github.com/Yash3422-bit/acquisitions#readme",
   "dependencies": {
     "@neondatabase/serverless": "^1.2.0",
+    "bcryptjs": "^3.0.3",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.6",
     "dotenv": "^18.0.9",
     "drizzle-orm": "^0.45.4",
-    "express": "^5.3.0"
+    "express": "^5.3.0",
+    "express-rate-limit": "^8.7.4",
+    "helmet": "^8.3.0",
+    "jsonwebtoken": "^9.0.3",
+    "morgan": "^1.12.1",
+    "winston": "^3.19.0"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "drizzle-kit": "^0.31.11",
+    "drizzle-kit": "0.30.6",
     "eslint": "^10.14.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.7",
-    "prettier": "^3.9.10"
+    "husky": "^9.1.7",
+    "lint-staged": "^17.6.1",
+    "pg": "^8.23.1",
+    "prettier": "^3.9.10",
+    "supertest": "^7.3.2",
+    "vitest": "^5.1.0"
+  },
+  "overrides": {
+    "esbuild": "0.28.2"
+  },
+  "allowScripts": {
+    "esbuild@0.28.2": true
+  },
+  "lint-staged": {
+    "*.{js,mjs,cjs}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,yml,yaml,md}": [
+      "prettier --write"
+    ]
   }
 }

@@ -8,6 +8,13 @@
       "when": 1793945480421,
       "tag": "0000_purple_colossus",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1794818089431,
+      "tag": "0001_true_giant_girl",
+      "breakpoints": true
     }
   ]
 }

@@ -1,7 +1,13 @@
 import js from '@eslint/js';
+import eslintConfigPrettier from 'eslint-config-prettier/flat';
 
 export default [
+  {
+    ignores: ['node_modules/**', 'coverage/**', 'logs/**', 'drizzle/**'],
+  },
+
   js.configs.recommended,
+
   {
     languageOptions: {
       ecmaVersion: 2022,
@@ -10,8 +16,6 @@ export default [
         console: 'readonly',
         process: 'readonly',
         Buffer: 'readonly',
-        _dirname: 'readonly',
-        _filename: 'readonly',
         URL: 'readonly',
         setTimeout: 'readonly',
         clearTimeout: 'readonly',
@@ -19,6 +23,7 @@ export default [
         clearInterval: 'readonly',
       },
     },
+
     rules: {
       indent: ['error', 2, { SwitchCase: 1 }],
       'linebreak-style': ['error', 'unix'],
@@ -32,8 +37,10 @@ export default [
       'prefer-arrow-callback': 'error',
     },
   },
+
   {
     files: ['tests/**/*.js'],
+
     languageOptions: {
       globals: {
         describe: 'readonly',
@@ -47,7 +54,6 @@ export default [
       },
     },
   },
-  {
-    files: ['node_modules/**', 'coverage/**', 'logs/**', 'drizzle/**'],
-  },
+
+  eslintConfigPrettier,
 ];

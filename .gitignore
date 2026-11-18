@@ -1,2 +1,16 @@
-node_modules
+node_modules/
+
+# Environment variables
+.env
 .env.*
+!.env.example
+
+# Application logs
+logs/
+
+# Temporary and backup files
+*.backup
+*.log
+
+# Generated SBOM reports
+*.sbom.json
